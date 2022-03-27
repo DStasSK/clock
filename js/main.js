@@ -97,9 +97,9 @@ function arrowStyle(a){
 
 
 // смена темного и светлого стилей
+const DarkLight = document.querySelector('.d_l');
+const clockBg = document.querySelector('.clock');
 function reflash(){
-   const DarkLight = document.querySelector('.d_l');
-   const clockBg = document.querySelector('.clock');
    const isDark = clockBg.classList.contains('light');
 
    if (isDark) {
