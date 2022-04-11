@@ -15,7 +15,7 @@
    max-height:600px;
    width:70vw;
    height:70vw;
-   margin:15px auto;
+   margin:10px auto;
 
    overflow:hidden;
    display:flex;
@@ -136,4 +136,20 @@
 .light .clock__panel{
    background:#bbb;
    color:#555;
+}
+
+
+/* медиазапросы */
+@media screen and (orientation: landscape){
+   .clock{
+      width:94vh;
+      height:94vh;
+      font-size:clamp(52px, 17vh, 93px);
+   }
+   .clock__panel_time{
+      font-size:clamp(52px, 78%, 98px);
+   }
+   .clock__panel_day{
+      font-size:clamp(30px, 49%, 59px);
+   }
 }
