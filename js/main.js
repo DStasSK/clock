@@ -1,13 +1,15 @@
-const hourArrow = document.querySelector('.hour');
-const minuteArrow = document.querySelector('.minute');
-const secondArrow = document.querySelector('.one');
-const secondArrowGhost = document.querySelector('.two');
-const dataTime = document.querySelector('.time');
-const dataDey = document.querySelector('.day');
+const hourArrow = document.querySelector('.clock__hour');
+const minuteArrow = document.querySelector('.clock__minute');
+const secondArrow = document.querySelector('.clock__second_one');
+const secondArrowGhost = document.querySelector('.clock__second_two');
+const dataTime = document.querySelector('.clock__panel_time');
+const dataDey = document.querySelector('.clock__panel_day');
 
 var ghost = 0, second = 0, minute = 0, hour = 0, day = 0, month = 0, isHidden = 0;
 
-var MonthsArray =  ['января','февр.','марта','апр.','мая','июня','июля','авг.','сент.','окт.','ноября','дек.'];
+var MonthsArray = ['января','февр.','марта','апр.',
+                   'мая','июня','июля','авг.',
+                   'сент.','окт.','ноября','дек.'];
 
 
 function clock() {
@@ -24,8 +26,7 @@ function clock() {
             arrowStyle(0);
             isHidden = 1;
          }
-      }
-      else{
+      } else{
          // установка секундной стрелки
          arrowSecondGhost();
          // обновление стрелок и даты
@@ -41,7 +42,6 @@ function clock() {
 clock();
 
 
-// установка значений часов
 function setArrowTime(){
    const data = new Date();
 
@@ -56,20 +56,19 @@ function setArrowTime(){
    if (hour < 10){hour = '0' + hour}
    if (minute < 10){minute = '0' + minute}
    if (day < 10){day = '0' + day}
+
    dataTime.innerHTML = hour + ':' + minute;
    dataDey.innerHTML = day + ' ' + MonthsArray[month];
 }
 
 
-// установка секундной стрелки
 function arrowSecondGhost(){
    const data = new Date();
    second = data.getSeconds();
 
    if((second>=0)&(second<30)){
       ghost = 30 + second;
-   }
-   else {
+   } else {
       ghost = second - 30;
    }
 
@@ -90,23 +89,23 @@ function arrowStyle(a){
    // костыль для работы на неактивной вкладке
    // задержка 20ms ОЧЕНЬ нужна для выхода из неактива
    setTimeout(()=>{
-      secondArrow.style.transition = 'transform '+a+'s linear';
-      secondArrowGhost.style.transition = 'transform '+a+'s linear';
+      secondArrow.style.transition = 'transform ' + a + 's linear';
+      secondArrowGhost.style.transition = 'transform ' + a + 's linear';
    }, 20);
 }
 
 
+
 // смена темного и светлого стилей
-const DarkLight = document.querySelector('.d_l');
+const darkLight = document.querySelector('.bottom');
 const clockBg = document.querySelector('.clock');
+
 function reflash(){
    const isDark = clockBg.classList.contains('light');
-
    if (isDark) {
       clockBg.classList.remove('light');
-   }
-   else {
+   } else {
       clockBg.classList.add('light');
    };
 }
-DarkLight.addEventListener('click', reflash);
+darkLight.addEventListener('click', reflash);

@@ -5,20 +5,22 @@
    font-size:clamp(52px, 10vw, 93px);
    font-family:monospace;
    font-style:normal;
+
    position:relative;
+   z-index:2;
+
    min-width:380px;
    min-height:380px;
    max-width:600px;
    max-height:600px;
-   width:60vw;
-   height:60vw;
+   width:70vw;
+   height:70vw;
    margin:15px auto;
-   overflow:hidden;
 
+   overflow:hidden;
    display:flex;
    justify-content:center;
    align-items:center;
-   z-index:2;
 
    transition:background 1s;
    background:#092020 url('../img/clock light.png') center / cover;
@@ -29,90 +31,83 @@
                inset 0 -8px 10px rgba(255, 255, 255, .05),
                inset 0 8px 10px rgba(0, 0, 0, .3);
 }
-.clock.light{
-   transition:background 1s;
-   background:#f8f9dd url('../img/clock dark.png') center / cover;
-}
-.clock > div{
-   position:absolute;
-}
-.clock > div::before{
-   position:absolute;
-   content:'';
-   border-radius:40% 40% 0 0;
-}
-.hour{
+.clock__hour{
    width:50%;
    height:50%;
+   position:absolute;
    z-index:6;
 }
-.hour::before{
+.clock__hour::before{
+   content:'';
    width:4.6%;
    height:50%;
    background:#e08308;
+   border-radius:40% 40% 0 0;
+   position:absolute;
    left:47.7%;
 }
-.minute{
+.clock__minute{
    width:69%;
    height:69%;
+   position:absolute;
    z-index:7;
 }
-.minute::before{
+.clock__minute::before{
+   position:absolute;
+   content:'';
+   border-radius:40% 40% 0 0;
    width:2.8%;
    height:50%;
    background:#628be7;
    left:48.6%;
 }
-.second{
+.clock__second{
    width:82%;
    height:82%;
+   position:absolute;
    z-index:8;
 }
-.second::before{
+.clock__second::before{
+   position:absolute;
+   left:49.6%;
+   content:'';
    width:.8%;
    height:58%;
    background:#fff;
-   left:49.6%;
    transition:background 1s;
    border-radius:0 !important;
 }
-.two.second::before{
+.clock__second_two::before{
    top:auto;
    bottom:0;
 }
-.light .second::before{
-   background:#333;
-}
-.panel{
+.clock__panel{
+   position:absolute;
+   z-index:3;
    line-height:1;
    text-align:center;
    color:#888;
    background:#141414;
-   z-index:3;
    opacity:.6;
    transition:background 1s, color 1s;
    padding:0 1.2%;
 }
-.time{
+.clock__panel_time{
    top:22%;
    border-radius:4px;
    font-size:52px;
    font-size:clamp(52px, 78%, 98px);
-   letter-spacing:1.8%;
+   letter-spacing:.018em;
 }
-.day{
+.clock__panel_day{
    top:72%;
    border-radius:3px;
    font-size:30px;
    font-size:clamp(30px, 49%, 59px);
-   letter-spacing:1.2%;
+   letter-spacing:.012em;
    text-transform:uppercase;
 }
-.light .panel{
-   background:#bbb;
-   color:#555;
-}
-.d_l{
+.clock__bottom{
    display:block;
    content:'';
    width:4.2%;
@@ -127,4 +122,18 @@
 @keyframes blShow {
    0%  {background:#fff}
    100%{background:#aaa}
+}
+
+
+/* смена оформления */
+.light.clock{
+   transition:background 1s;
+   background:#f8f9dd url('../img/clock dark.png') center / cover;
+}
+.light .clock__second::before{
+   background:#333;
+}
+.light .clock__panel{
+   background:#bbb;
+   color:#555;
 }
